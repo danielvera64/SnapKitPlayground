@@ -23,5 +23,15 @@ I found the solution in this [stackoverflow answer](https://stackoverflow.com/a/
 
 Now you can use import in the playground.
 
+## How to access the project's classes in the playground
+
+1. Create a new "Cocoa Touch Framework" target.
+2. In the Podfile add the SnapKit to the new framework.
+3. In Xcode File Inspector check the new framework Target Membership to the ViewControllers you want to access in the playground.
+5. Import the new framework in the playground.
+6. Now you have access to the ViewController's project in the playground.
+
+Note: You have to override the loadView() method of the ViewController in order to see the desing in the playground's preview.
+
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
