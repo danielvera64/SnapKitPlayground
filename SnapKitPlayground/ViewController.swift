@@ -12,14 +12,12 @@ import SnapKit
 public class ViewController: UIViewController {
   
   public override func loadView() {
-    print("--------_> loadView")
     let view = UIView()
     setUpWith(parent: view)
     self.view = view
   }
   
   override public func viewDidLoad() {
-    print("--------_> viewDidLoad")
     super.viewDidLoad()
   }
 
