@@ -22,16 +22,45 @@ public class ViewController: UIViewController {
   }
 
   func setUpWith(parent: UIView) {
-    parent.backgroundColor = .lightGray
+    parent.backgroundColor = .white
+    
+    let orangeView = UIView()
+    orangeView.backgroundColor = UIColor(red: 30/255, green: 136/255, blue: 229/255, alpha: 1.0)
+    parent.addSubview(orangeView)
+    orangeView.snp.makeConstraints {
+      $0.top.leading.trailing.equalToSuperview()
+      $0.height.equalTo(parent.snp.height).multipliedBy(0.15)
+    }
     
     let titleLabel = UILabel()
-    titleLabel.text = "Main Screen"
-    titleLabel.textAlignment = .center
-    titleLabel.font = UIFont.boldSystemFont(ofSize: 22)
+    titleLabel.text = "SnapQuiz"
+    titleLabel.font = UIFont.boldSystemFont(ofSize: 25)
     titleLabel.textColor = .white
-    parent.addSubview(titleLabel)
+    orangeView.addSubview(titleLabel)
     titleLabel.snp.makeConstraints {
-      $0.center.equalToSuperview()
+      $0.leading.trailing.bottom
+        .equalToSuperview()
+        .inset(UIEdgeInsets(top: 0, left: 20, bottom: 8, right: 20))
+    }
+    
+    let timerContainerView = UIView()
+    timerContainerView.layer.borderWidth = 1
+    timerContainerView.layer.borderColor = UIColor.black.cgColor
+    timerContainerView.layer.cornerRadius = 10
+    parent.addSubview(timerContainerView)
+    timerContainerView.snp.makeConstraints {
+      $0.top.equalTo(orangeView.snp.bottom).offset(50)
+      $0.centerX.equalToSuperview()
+      $0.width.equalToSuperview().multipliedBy(0.3)
+    }
+    
+    let timerLabel = UILabel()
+    timerLabel.text = "00:00"
+    timerLabel.font = .systemFont(ofSize: 15)
+    timerLabel.textAlignment = .center
+    timerContainerView.addSubview(timerLabel)
+    timerLabel.snp.makeConstraints {
+      $0.edges.equalToSuperview().inset(UIEdgeInsets(top: 8, left: 12, bottom: 8, right: 12))
     }
   }
 
